@@ -1,0 +1,48 @@
+import { NextResponse } from 'next/server';
+
+const countries = [
+	{ id: 1, name: 'Argentina', popular: false, description: 'eSIM для Аргентини' },
+	{ id: 2, name: 'Australia', popular: true, description: 'eSIM для Австралії' },
+	{ id: 3, name: 'Austria', popular: false, description: 'eSIM для Австрії' },
+	{ id: 4, name: 'Brazil', popular: false, description: 'eSIM для Бразилії' },
+	{ id: 5, name: 'Canada', popular: true, description: 'eSIM для Канади' },
+	{ id: 6, name: 'China', popular: false, description: 'eSIM для Китаю' },
+	{ id: 7, name: 'Czech Republic', popular: false, description: 'eSIM для Чехії' },
+	{ id: 8, name: 'Egypt', popular: false, description: 'eSIM для Єгипту' },
+	{ id: 9, name: 'France', popular: true, description: 'eSIM для Франції' },
+	{ id: 10, name: 'Germany', popular: true, description: 'eSIM для Німеччини' },
+	{ id: 11, name: 'Greece', popular: false, description: 'eSIM для Греції' },
+	{ id: 12, name: 'Hungary', popular: false, description: 'eSIM для Угорщини' },
+	{ id: 13, name: 'India', popular: false, description: 'eSIM для Індії' },
+	{ id: 14, name: 'Indonesia', popular: false, description: 'eSIM для Індонезії' },
+	{ id: 15, name: 'Ireland', popular: false, description: 'eSIM для Ірландії' },
+	{ id: 16, name: 'Israel', popular: false, description: 'eSIM для Ізраїлю' },
+	{ id: 17, name: 'Italy', popular: true, description: 'eSIM для Італії' },
+	{ id: 18, name: 'Japan', popular: true, description: 'eSIM для Японії' },
+	{ id: 19, name: 'Malaysia', popular: false, description: 'eSIM для Малайзії' },
+	{ id: 20, name: 'Mexico', popular: true, description: 'eSIM для Мексики' },
+	{ id: 21, name: 'Morocco', popular: false, description: 'eSIM для Марокко' },
+	{ id: 22, name: 'Netherlands', popular: false, description: 'eSIM для Нідерландів' },
+	{ id: 23, name: 'New Zealand', popular: false, description: 'eSIM для Нової Зеландії' },
+	{ id: 24, name: 'Norway', popular: false, description: 'eSIM для Норвегії' },
+	{ id: 25, name: 'Philippines', popular: false, description: 'eSIM для Філіппін' },
+	{ id: 26, name: 'Poland', popular: false, description: 'eSIM для Польщі' },
+	{ id: 27, name: 'Portugal', popular: false, description: 'eSIM для Португалії' },
+	{ id: 28, name: 'Singapore', popular: true, description: 'eSIM для Сінгапуру' },
+	{ id: 29, name: 'South Africa', popular: false, description: 'eSIM для ПАР' },
+	{ id: 30, name: 'South Korea', popular: true, description: 'eSIM для Південної Кореї' },
+	{ id: 31, name: 'Spain', popular: true, description: 'eSIM для Іспанії' },
+	{ id: 32, name: 'Sweden', popular: false, description: 'eSIM для Швеції' },
+	{ id: 33, name: 'Switzerland', popular: false, description: 'eSIM для Швейцарії' },
+	{ id: 34, name: 'Thailand', popular: true, description: 'eSIM для Таїланду' },
+	{ id: 35, name: 'Turkey', popular: false, description: 'eSIM для Туреччини' },
+	{ id: 36, name: 'Ukraine', popular: false, description: 'eSIM для України' },
+	{ id: 37, name: 'United Arab Emirates', popular: true, description: 'eSIM для ОАЕ' },
+	{ id: 38, name: 'United Kingdom', popular: true, description: 'eSIM для Великої Британії' },
+	{ id: 39, name: 'United States', popular: true, description: 'eSIM для США' },
+	{ id: 40, name: 'Vietnam', popular: false, description: 'eSIM для Вʼєтнаму' },
+];
+
+export async function GET() {
+	return NextResponse.json(countries);
+}
