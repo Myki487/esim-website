@@ -48,7 +48,6 @@ export default function SearchCountry() {
 				))}
 			</div>
 
-      {/* Кнопки */}
       {otherCountries.length > 0 && searchTerm === '' && (
         <button
           onClick={() => setShowAll((prev) => !prev)}

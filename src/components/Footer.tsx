@@ -2,14 +2,8 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { Country } from '@/types/Country';
 import { useEffect, useState } from 'react'
-
-type Country = {
-  id: number
-  name: string
-  popular: boolean
-  description: string
-}
 
 export default function Footer() {
   const [popularCountries, setPopularCountries] = useState<Country[]>([])
@@ -26,7 +20,6 @@ export default function Footer() {
   return (
     <footer className="bg-slate-900 text-gray-200 py-10 px-6">
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-        {/* Logo & description */}
         <div>
 					<Image src="/Logo.png" alt="TravelsGo Logo" width={64} height={64} />
           <div className="text-xl font-bold">TravelsGo</div>
@@ -35,13 +28,12 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Popular countries */}
         <div>
           <h3 className="text-lg font-semibold mb-2">Popular countries</h3>
           <ul className="space-y-1 text-sm">
             {popularCountries.map((country) => (
               <li key={country.id}>
-                <Link href={`/countries/${country.name.toLowerCase()}`} className="hover:underline">
+                <Link href={`/countries/${country.id}`} className="hover:underline">
                   {country.name}
                 </Link>
               </li>
@@ -49,7 +41,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* FAQ */}
         <div>
           <h3 className="text-lg font-semibold mb-2">FAQ</h3>
           <ul className="space-y-1 text-sm">
@@ -59,12 +50,11 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Help & extra */}
         <div>
           <h3 className="text-lg font-semibold mb-2">Help</h3>
           <ul className="space-y-1 text-sm">
-            <li><Link href="/contact" className="hover:underline">Contact us</Link></li>
-            <li><Link href="/countries" className="hover:underline">All countries</Link></li>
+            <li><Link href="/contacts" className="hover:underline">Contact us</Link></li>
+            <li><Link href="/" className="hover:underline">All countries</Link></li>
             <li><Link href="/partners" className="hover:underline">Partnerships</Link></li>
           </ul>
         </div>
