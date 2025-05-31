@@ -1,5 +1,5 @@
 export type Country = {
-  id: number
+  id: string
   name: string
   popular: boolean
   description: string

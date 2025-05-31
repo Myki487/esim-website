@@ -6,16 +6,10 @@ import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
+import { Country } from '@/types/Country'
 
 const questionTypes = ['How it works', 'Technical requirements', 'Account', 'Other']
 const platforms = ['Android', 'Android Tablet', 'iPhone', 'iPad', 'Other']
-
-type Country = {
-  id: number
-  name: string
-  popular: boolean
-  description: string
-}
 
 export default function ContactForm() {
   const [countries, setCountries] = useState<string[]>([])

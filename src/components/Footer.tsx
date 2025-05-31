@@ -27,16 +27,13 @@ export default function Footer() {
             travelsgo.com eSIM provides affordable, easy to use travel bundles in over 40 countries worldwide.
           </p>
         </div>
-
         <div>
           <h3 className="text-lg font-semibold mb-2">Popular countries</h3>
           <ul className="space-y-1 text-sm">
             {popularCountries.map((country) => (
-              <li key={country.id}>
-                <Link href={`/countries/${country.id}`} className="hover:underline">
-                  {country.name}
+                <Link key={country.id} href={`/countries/${country.id}`} className="hover:underline">
+									<li>{country.name}</li>
                 </Link>
-              </li>
             ))}
           </ul>
         </div>
