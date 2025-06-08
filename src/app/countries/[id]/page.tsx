@@ -34,7 +34,13 @@ export default async function CountryPage({ params }: { params: { id: string } }
         <p className="text-gray-400 text-lg">
           You’ll receive an email with your eSIM in seconds, no matter where you are.
         </p>
-        <PlanSelection key="plan-selection" />
+        <PlanSelection
+					key="plan-selection"
+					countryId={country.id}
+					countryName={country.name}
+					prices={country.prices}
+				/>
+
       </div>
     </div>
   )
