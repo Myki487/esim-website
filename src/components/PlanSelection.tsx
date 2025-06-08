@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import classNames from 'classnames'
 
 const unlimitedOptions = [
@@ -20,33 +19,9 @@ const dataPlans = [
   { label: '50GB', value: '50gb' },
 ]
 
-export default function PlanSelection({
-  countryId,
-	countryName,
-  prices
-}: {
-  countryId: string
-	countryName: string
-  prices: Record<string, number>
-}) {
-  const [selectedPlan, setSelectedPlan] = useState<string | null>(null)
-  const router = useRouter()
+export default function PlanSelection() {
+	const [selectedPlan, setSelectedPlan] = useState<string | null>(null)
 
-  const handleBuyNow = () => {
-    if (!selectedPlan) return
-
-    const price = prices[selectedPlan] || 0
-
-    localStorage.setItem('selectedPlan', JSON.stringify({
-      countryId,
-			countryName,
-      planId: selectedPlan,
-      label: [...unlimitedOptions, ...dataPlans].find(p => p.value === selectedPlan)?.label || selectedPlan,
-      price
-    }))
-
-    router.push('/checkout')
-  }
 
   return (
     <div>
@@ -61,10 +36,7 @@ export default function PlanSelection({
             )}
             onClick={() => setSelectedPlan(plan.value)}
           >
-            <div>{plan.label}</div>
-            <div className="text-sm text-gray-600">
-              ${prices[plan.value] ?? 'N/A'}
-            </div>
+            {plan.label}
           </div>
         ))}
       </div>
@@ -80,10 +52,7 @@ export default function PlanSelection({
             )}
             onClick={() => setSelectedPlan(plan.value)}
           >
-            <div>{plan.label}</div>
-            <div className="text-sm text-gray-600">
-              ${prices[plan.value] ?? 'N/A'}
-            </div>
+            {plan.label}
           </div>
         ))}
       </div>
@@ -92,7 +61,6 @@ export default function PlanSelection({
         <button
           disabled={!selectedPlan}
           className="px-6 py-3 mb-8 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 disabled:bg-gray-400"
-          onClick={handleBuyNow}
         >
           Buy Now
         </button>
