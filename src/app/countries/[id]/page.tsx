@@ -31,13 +31,18 @@ export default async function CountryPage({ params }: { params: { id: string } }
         <p className="text-gray-700 text-lg">
           The {country.name} Travel Bundle is available in a range of data sizes from 1GB to 20GB.
         </p>
-        <p className="text-gray-700 text-lg">2G / 3G / 4G Data Speed</p>
+        <p className="text-gray-700 text-lg">2G / 3G / 4G / 5G Data Speed</p>
         <p className="text-gray-700 text-lg">Bundle Options</p>
         <p className="text-gray-700 text-lg">
           You’ll receive an email with your eSIM in seconds, no matter where you are.
         </p>
 
-        <PlanSelection key="plan-selection" />
+        <PlanSelection
+					key="plan-selection"
+					countryId={country.id}
+					countryName={country.name}
+					prices={country.prices}
+				/>
       </div>
     </div>
   )

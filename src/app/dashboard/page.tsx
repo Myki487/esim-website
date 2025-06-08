@@ -1,35 +1,39 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link'
+import { useUser } from '@/context/UserContext'
+import { useEffect, useState } from 'react'
+import { Purchase } from '@/types/Purchase'
 
 export default function DashboardPage() {
-  const router = useRouter();
-  const [user, setUser] = useState<{ username: string } | null>(null);
+  const { user } = useUser()
+  const [purchases, setPurchases] = useState<Purchase[]>([])
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (!storedUser) {
-      router.push('/login');
-    } else {
-      setUser(JSON.parse(storedUser));
+    if (!user) return
+
+    const data = localStorage.getItem(`purchases_${user.email}`)
+    if (data) {
+      setPurchases(JSON.parse(data))
     }
-  }, [router]);
-
-  const handleLogout = () => {
-    localStorage.removeItem('user');
-    router.push('/login');
-  };
-
-  if (!user) return null;
+  }, [user])
 
   return (
-		<div className="min-h-screen flex items-center justify-center bg-gray-900 text-white p-4">
-			<div className="bg-gray-800 p-6 rounded-xl shadow-md text-center">
-				<h2 className="text-xl font-bold mb-4">Welcome, {user.username}!</h2>
-					<Link href="/logout" onClick={handleLogout} className="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700">Logout</Link>
-			</div>
-		</div>
-  );
+    <div className="max-w-3xl mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-4">Your Purchases</h1>
+      {purchases.length === 0 ? (
+        <p>No purchases yet.</p>
+      ) : (
+        <ul className="space-y-4">
+          {purchases.map((purchase, index) => (
+            <li key={index} className="border p-4 rounded shadow">
+              <p><strong>Country:</strong> {purchase.countryName}</p>
+              <p><strong>Plan:</strong> {purchase.label}</p>
+              <p><strong>Price:</strong> ${purchase.price}</p>
+              <p><strong>Date:</strong> {new Date(purchase.date).toLocaleString()}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  )
 }

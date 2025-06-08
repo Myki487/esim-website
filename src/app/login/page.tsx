@@ -2,23 +2,27 @@
 
 import { useUser } from '@/context/UserContext'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function LoginPage() {
-  const { login } = useUser()
+  const { login, user } = useUser()
   const router = useRouter()
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
+  useEffect(() => {
+    if (user) router.push('/dashboard')
+  }, [user])
+
   const handleLogin = () => {
     if (username === 'Admin777' && password === '03058425') {
       login({ username: 'Admin777', email: 'myusername1928@gmail.com' })
-      router.push('/dashboard')
+      router.push('/checkout')
     } else if (username === 'VavyLone' && password === 'VavyLone487') {
       login({ username: 'VavyLone', email: 'mr.k.g.487@gmail.com' })
-      router.push('/dashboard')
+      router.push('/checkout')
     } else {
       setError('Invalid credentials')
     }
