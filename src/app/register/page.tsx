@@ -40,6 +40,7 @@ export default function RegisterPage() {
   }
 
   return (
+		console.log("🟢 Це спрацювало"),
     <div className="max-w-md mx-auto mt-12 p-6 border shadow rounded-xl">
       <h1 className="text-2xl font-bold text-center mb-4">Register</h1>
       <form onSubmit={handleRegister} className="space-y-4">
