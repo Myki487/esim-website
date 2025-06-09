@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 type Props = {
-  compact?: boolean // якщо true — не показує популярні/всі країни спочатку
+  compact?: boolean 
 }
 
 export default function SearchCountry({ compact = false }: Props) {
@@ -29,11 +29,13 @@ export default function SearchCountry({ compact = false }: Props) {
   const popularCountries = filteredCountries.filter((c) => c.popular)
   const otherCountries = filteredCountries.filter((c) => !c.popular)
 
-	const visibleCountries = compact
-  ? searchTerm === '' ? [] : filteredCountries
-  : showAll
-  ? filteredCountries
-  : popularCountries
+  const visibleCountries = compact
+    ? searchTerm === '' ? [] : filteredCountries
+    : searchTerm !== ''
+    ? filteredCountries
+    : showAll
+    ? filteredCountries
+    : popularCountries
 
   return (
     <div className="flex flex-col items-center w-full">
@@ -45,7 +47,7 @@ export default function SearchCountry({ compact = false }: Props) {
         className="p-2 border rounded mb-4 w-full max-w-md"
       />
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4 w-full max-w-4xl">
         {visibleCountries.map((country) => (
           <Link key={country.id} href={`/countries/${country.id}`}>
             <div className="border rounded-xl p-3 hover:shadow transition cursor-pointer">

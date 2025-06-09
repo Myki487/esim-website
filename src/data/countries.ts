@@ -1,45 +1,684 @@
-
 export const countries = [
-  { id: 'ar', name: 'Argentina', popular: false, description: 'eSIM для Аргентини' },
-  { id: 'au', name: 'Australia', popular: true, description: 'eSIM для Австралії' },
-  { id: 'at', name: 'Austria', popular: false, description: 'eSIM для Австрії' },
-  { id: 'br', name: 'Brazil', popular: false, description: 'eSIM для Бразилії' },
-  { id: 'ca', name: 'Canada', popular: true, description: 'eSIM для Канади' },
-  { id: 'cn', name: 'China', popular: false, description: 'eSIM для Китаю' },
-  { id: 'cz', name: 'Czech Republic', popular: false, description: 'eSIM для Чехії' },
-  { id: 'eg', name: 'Egypt', popular: false, description: 'eSIM для Єгипту' },
-  { id: 'fr', name: 'France', popular: true, description: 'eSIM для Франції' },
-  { id: 'de', name: 'Germany', popular: true, description: 'eSIM для Німеччини' },
-  { id: 'gr', name: 'Greece', popular: false, description: 'eSIM для Греції' },
-  { id: 'hu', name: 'Hungary', popular: false, description: 'eSIM для Угорщини' },
-  { id: 'in', name: 'India', popular: false, description: 'eSIM для Індії' },
-  { id: 'id', name: 'Indonesia', popular: false, description: 'eSIM для Індонезії' },
-  { id: 'ie', name: 'Ireland', popular: false, description: 'eSIM для Ірландії' },
-  { id: 'il', name: 'Israel', popular: false, description: 'eSIM для Ізраїлю' },
-  { id: 'it', name: 'Italy', popular: true, description: 'eSIM для Італії' },
-  { id: 'jp', name: 'Japan', popular: true, description: 'eSIM для Японії' },
-  { id: 'my', name: 'Malaysia', popular: false, description: 'eSIM для Малайзії' },
-  { id: 'mx', name: 'Mexico', popular: true, description: 'eSIM для Мексики' },
-  { id: 'ma', name: 'Morocco', popular: false, description: 'eSIM для Марокко' },
-  { id: 'nl', name: 'Netherlands', popular: false, description: 'eSIM для Нідерландів' },
-  { id: 'nz', name: 'New Zealand', popular: false, description: 'eSIM для Нової Зеландії' },
-  { id: 'no', name: 'Norway', popular: false, description: 'eSIM для Норвегії' },
-  { id: 'ph', name: 'Philippines', popular: false, description: 'eSIM для Філіппін' },
-  { id: 'pl', name: 'Poland', popular: false, description: 'eSIM для Польщі' },
-  { id: 'pt', name: 'Portugal', popular: false, description: 'eSIM для Португалії' },
-  { id: 'sg', name: 'Singapore', popular: true, description: 'eSIM для Сінгапуру' },
-  { id: 'za', name: 'South Africa', popular: false, description: 'eSIM для ПАР' },
-  { id: 'kr', name: 'South Korea', popular: true, description: 'eSIM для Південної Кореї' },
-  { id: 'es', name: 'Spain', popular: true, description: 'eSIM для Іспанії' },
-  { id: 'se', name: 'Sweden', popular: false, description: 'eSIM для Швеції' },
-  { id: 'ch', name: 'Switzerland', popular: false, description: 'eSIM для Швейцарії' },
-  { id: 'th', name: 'Thailand', popular: true, description: 'eSIM для Таїланду' },
-  { id: 'tr', name: 'Turkey', popular: false, description: 'eSIM для Туреччини' },
-  { id: 'ua', name: 'Ukraine', popular: false, description: 'eSIM для України' },
-  { id: 'ae', name: 'United Arab Emirates', popular: true, description: 'eSIM для ОАЕ' },
-  { id: 'gb', name: 'United Kingdom', popular: true, description: 'eSIM для Великої Британії' },
-  { id: 'us', name: 'United States', popular: true, description: 'eSIM для США' },
-  { id: 'vn', name: 'Vietnam', popular: false, description: 'eSIM для Вʼєтнаму' },
+	{
+		"id": "ar",
+		"name": "Argentina",
+		"popular": false,
+		"prices": {
+			"1-day": 2,
+			"3-days": 5,
+			"7-days": 9,
+			"15-days": 16,
+			"30-days": 28,
+			"2gb": 4,
+			"5gb": 8,
+			"10gb": 12,
+			"20gb": 20,
+			"50gb": 35
+		}
+	},
+	{
+		"id": "au",
+		"name": "Australia",
+		"popular": true,
+		"prices": {
+			"1-day": 3,
+			"3-days": 6,
+			"7-days": 11,
+			"15-days": 19,
+			"30-days": 33,
+			"2gb": 5,
+			"5gb": 9,
+			"10gb": 14,
+			"20gb": 23,
+			"50gb": 38
+		}
+	},
+	{
+		"id": "at",
+		"name": "Austria",
+		"popular": false,
+		"prices": {
+			"1-day": 2.5,
+			"3-days": 6,
+			"7-days": 10,
+			"15-days": 18,
+			"30-days": 30,
+			"2gb": 4.5,
+			"5gb": 9,
+			"10gb": 13,
+			"20gb": 21,
+			"50gb": 36
+		}
+	},
+	{
+		"id": "br",
+		"name": "Brazil",
+		"popular": false,
+		"prices": {
+			"1-day": 1.5,
+			"3-days": 4,
+			"7-days": 8,
+			"15-days": 14,
+			"30-days": 25,
+			"2gb": 3.5,
+			"5gb": 7,
+			"10gb": 11,
+			"20gb": 18,
+			"50gb": 30
+		}
+	},
+	{
+		"id": "ca",
+		"name": "Canada",
+		"popular": true,
+		"prices": {
+			"1-day": 3.5,
+			"3-days": 7,
+			"7-days": 13,
+			"15-days": 21,
+			"30-days": 36,
+			"2gb": 5.5,
+			"5gb": 10,
+			"10gb": 16,
+			"20gb": 26,
+			"50gb": 42
+		}
+	},
+	{
+		"id": "cn",
+		"name": "China",
+		"popular": false,
+		"prices": {
+			"1-day": 2,
+			"3-days": 5,
+			"7-days": 9,
+			"15-days": 16,
+			"30-days": 28,
+			"2gb": 4,
+			"5gb": 8,
+			"10gb": 12,
+			"20gb": 20,
+			"50gb": 35
+		}
+	},
+	{
+		"id": "cz",
+		"name": "Czech Republic",
+		"popular": false,
+		"prices": {
+			"1-day": 3,
+			"3-days": 6,
+			"7-days": 11,
+			"15-days": 19,
+			"30-days": 33,
+			"2gb": 5,
+			"5gb": 9,
+			"10gb": 14,
+			"20gb": 23,
+			"50gb": 38
+		}
+	},
+	{
+		"id": "eg",
+		"name": "Egypt",
+		"popular": false,
+		"prices": {
+			"1-day": 2.5,
+			"3-days": 6,
+			"7-days": 10,
+			"15-days": 18,
+			"30-days": 30,
+			"2gb": 4.5,
+			"5gb": 9,
+			"10gb": 13,
+			"20gb": 21,
+			"50gb": 36
+		}
+	},
+	{
+		"id": "fr",
+		"name": "France",
+		"popular": true,
+		"prices": {
+			"1-day": 2,
+			"3-days": 5,
+			"7-days": 9,
+			"15-days": 16,
+			"30-days": 28,
+			"2gb": 4,
+			"5gb": 8,
+			"10gb": 12,
+			"20gb": 20,
+			"50gb": 35
+		}
+	},
+	{
+		"id": "de",
+		"name": "Germany",
+		"popular": true,
+		"prices": {
+			"1-day": 3.5,
+			"3-days": 7,
+			"7-days": 13,
+			"15-days": 21,
+			"30-days": 36,
+			"2gb": 5.5,
+			"5gb": 10,
+			"10gb": 16,
+			"20gb": 26,
+			"50gb": 42
+		}
+	},
+	{
+		"id": "gr",
+		"name": "Greece",
+		"popular": false,
+		"prices": {
+			"1-day": 2,
+			"3-days": 5,
+			"7-days": 9,
+			"15-days": 16,
+			"30-days": 28,
+			"2gb": 4,
+			"5gb": 8,
+			"10gb": 12,
+			"20gb": 20,
+			"50gb": 35
+		}
+	},
+	{
+		"id": "hu",
+		"name": "Hungary",
+		"popular": false,
+		"prices": {
+			"1-day": 3,
+			"3-days": 6,
+			"7-days": 11,
+			"15-days": 19,
+			"30-days": 33,
+			"2gb": 5,
+			"5gb": 9,
+			"10gb": 14,
+			"20gb": 23,
+			"50gb": 38
+		}
+	},
+	{
+		"id": "in",
+		"name": "India",
+		"popular": false,
+		"prices": {
+			"1-day": 2.5,
+			"3-days": 6,
+			"7-days": 10,
+			"15-days": 18,
+			"30-days": 30,
+			"2gb": 4.5,
+			"5gb": 9,
+			"10gb": 13,
+			"20gb": 21,
+			"50gb": 36
+		}
+	},
+	{
+		"id": "id",
+		"name": "Indonesia",
+		"popular": false,
+		"prices": {
+			"1-day": 1.5,
+			"3-days": 4,
+			"7-days": 8,
+			"15-days": 14,
+			"30-days": 25,
+			"2gb": 3.5,
+			"5gb": 7,
+			"10gb": 11,
+			"20gb": 18,
+			"50gb": 30
+		}
+	},
+	{
+		"id": "ie",
+		"name": "Ireland",
+		"popular": false,
+		"prices": {
+			"1-day": 3.5,
+			"3-days": 7,
+			"7-days": 13,
+			"15-days": 21,
+			"30-days": 36,
+			"2gb": 5.5,
+			"5gb": 10,
+			"10gb": 16,
+			"20gb": 26,
+			"50gb": 42
+		}
+	},
+	{
+		"id": "il",
+		"name": "Israel",
+		"popular": false,
+		"prices": {
+			"1-day": 2,
+			"3-days": 5,
+			"7-days": 9,
+			"15-days": 16,
+			"30-days": 28,
+			"2gb": 4,
+			"5gb": 8,
+			"10gb": 12,
+			"20gb": 20,
+			"50gb": 35
+		}
+	},
+	{
+		"id": "it",
+		"name": "Italy",
+		"popular": true,
+		"prices": {
+			"1-day": 3,
+			"3-days": 6,
+			"7-days": 11,
+			"15-days": 19,
+			"30-days": 33,
+			"2gb": 5,
+			"5gb": 9,
+			"10gb": 14,
+			"20gb": 23,
+			"50gb": 38
+		}
+	},
+	{
+		"id": "jp",
+		"name": "Japan",
+		"popular": true,
+		"prices": {
+			"1-day": 2.5,
+			"3-days": 6,
+			"7-days": 10,
+			"15-days": 18,
+			"30-days": 30,
+			"2gb": 4.5,
+			"5gb": 9,
+			"10gb": 13,
+			"20gb": 21,
+			"50gb": 36
+		}
+	},
+	{
+		"id": "my",
+		"name": "Malaysia",
+		"popular": false,
+		"prices": {
+			"1-day": 1.5,
+			"3-days": 4,
+			"7-days": 8,
+			"15-days": 14,
+			"30-days": 25,
+			"2gb": 3.5,
+			"5gb": 7,
+			"10gb": 11,
+			"20gb": 18,
+			"50gb": 30
+		}
+	},
+	{
+		"id": "mx",
+		"name": "Mexico",
+		"popular": true,
+		"prices": {
+			"1-day": 3.5,
+			"3-days": 7,
+			"7-days": 13,
+			"15-days": 21,
+			"30-days": 36,
+			"2gb": 5.5,
+			"5gb": 10,
+			"10gb": 16,
+			"20gb": 26,
+			"50gb": 42
+		}
+	},
+	{
+		"id": "ma",
+		"name": "Morocco",
+		"popular": false,
+		"prices": {
+			"1-day": 2,
+			"3-days": 5,
+			"7-days": 9,
+			"15-days": 16,
+			"30-days": 28,
+			"2gb": 4,
+			"5gb": 8,
+			"10gb": 12,
+			"20gb": 20,
+			"50gb": 35
+		}
+	},
+	{
+		"id": "nl",
+		"name": "Netherlands",
+		"popular": false,
+		"prices": {
+			"1-day": 3,
+			"3-days": 6,
+			"7-days": 11,
+			"15-days": 19,
+			"30-days": 33,
+			"2gb": 5,
+			"5gb": 9,
+			"10gb": 14,
+			"20gb": 23,
+			"50gb": 38
+		}
+	},
+	{
+		"id": "nz",
+		"name": "New Zealand",
+		"popular": false,
+		"prices": {
+			"1-day": 2.5,
+			"3-days": 6,
+			"7-days": 10,
+			"15-days": 18,
+			"30-days": 30,
+			"2gb": 4.5,
+			"5gb": 9,
+			"10gb": 13,
+			"20gb": 21,
+			"50gb": 36
+		}
+	},
+	{
+		"id": "no",
+		"name": "Norway",
+		"popular": false,
+		"prices": {
+			"1-day": 1.5,
+			"3-days": 4,
+			"7-days": 8,
+			"15-days": 14,
+			"30-days": 25,
+			"2gb": 3.5,
+			"5gb": 7,
+			"10gb": 11,
+			"20gb": 18,
+			"50gb": 30
+		}
+	},
+	{
+		"id": "ph",
+		"name": "Philippines",
+		"popular": false,
+		"prices": {
+			"1-day": 3.5,
+			"3-days": 7,
+			"7-days": 13,
+			"15-days": 21,
+			"30-days": 36,
+			"2gb": 5.5,
+			"5gb": 10,
+			"10gb": 16,
+			"20gb": 26,
+			"50gb": 42
+		}
+	},
+	{
+		"id": "pl",
+		"name": "Poland",
+		"popular": false,
+		"prices": {
+			"1-day": 2,
+			"3-days": 5,
+			"7-days": 9,
+			"15-days": 16,
+			"30-days": 28,
+			"2gb": 4,
+			"5gb": 8,
+			"10gb": 12,
+			"20gb": 20,
+			"50gb": 35
+		}
+	},
+	{
+		"id": "pt",
+		"name": "Portugal",
+		"popular": false,
+		"prices": {
+			"1-day": 3,
+			"3-days": 6,
+			"7-days": 11,
+			"15-days": 19,
+			"30-days": 33,
+			"2gb": 5,
+			"5gb": 9,
+			"10gb": 14,
+			"20gb": 23,
+			"50gb": 38
+		}
+	},
+	{
+		"id": "sg",
+		"name": "Singapore",
+		"popular": true,
+		"prices": {
+			"1-day": 2.5,
+			"3-days": 6,
+			"7-days": 10,
+			"15-days": 18,
+			"30-days": 30,
+			"2gb": 4.5,
+			"5gb": 9,
+			"10gb": 13,
+			"20gb": 21,
+			"50gb": 36
+		}
+	},
+	{
+		"id": "za",
+		"name": "South Africa",
+		"popular": false,
+		"prices": {
+			"1-day": 1.5,
+			"3-days": 4,
+			"7-days": 8,
+			"15-days": 14,
+			"30-days": 25,
+			"2gb": 3.5,
+			"5gb": 7,
+			"10gb": 11,
+			"20gb": 18,
+			"50gb": 30
+		}
+	},
+	{
+		"id": "kr",
+		"name": "South Korea",
+		"popular": true,
+		"prices": {
+			"1-day": 3.5,
+			"3-days": 7,
+			"7-days": 13,
+			"15-days": 21,
+			"30-days": 36,
+			"2gb": 5.5,
+			"5gb": 10,
+			"10gb": 16,
+			"20gb": 26,
+			"50gb": 42
+		}
+	},
+	{
+		"id": "es",
+		"name": "Spain",
+		"popular": true,
+		"prices": {
+			"1-day": 2,
+			"3-days": 5,
+			"7-days": 9,
+			"15-days": 16,
+			"30-days": 28,
+			"2gb": 4,
+			"5gb": 8,
+			"10gb": 12,
+			"20gb": 20,
+			"50gb": 35
+		}
+	},
+	{
+		"id": "se",
+		"name": "Sweden",
+		"popular": false,
+		"prices": {
+			"1-day": 3,
+			"3-days": 6,
+			"7-days": 11,
+			"15-days": 19,
+			"30-days": 33,
+			"2gb": 5,
+			"5gb": 9,
+			"10gb": 14,
+			"20gb": 23,
+			"50gb": 38
+		}
+	},
+	{
+		"id": "ch",
+		"name": "Switzerland",
+		"popular": false,
+		"prices": {
+			"1-day": 2.5,
+			"3-days": 6,
+			"7-days": 10,
+			"15-days": 18,
+			"30-days": 30,
+			"2gb": 4.5,
+			"5gb": 9,
+			"10gb": 13,
+			"20gb": 21,
+			"50gb": 36
+		}
+	},
+	{
+		"id": "th",
+		"name": "Thailand",
+		"popular": true,
+		"prices": {
+			"1-day": 1.5,
+			"3-days": 4,
+			"7-days": 8,
+			"15-days": 14,
+			"30-days": 25,
+			"2gb": 3.5,
+			"5gb": 7,
+			"10gb": 11,
+			"20gb": 18,
+			"50gb": 30
+		}
+	},
+	{
+		"id": "tr",
+		"name": "Turkey",
+		"popular": false,
+		"prices": {
+			"1-day": 3.5,
+			"3-days": 7,
+			"7-days": 13,
+			"15-days": 21,
+			"30-days": 36,
+			"2gb": 5.5,
+			"5gb": 10,
+			"10gb": 16,
+			"20gb": 26,
+			"50gb": 42
+		}
+	},
+	{
+		"id": "ua",
+		"name": "Ukraine",
+		"popular": false,
+		"prices": {
+			"1-day": 2,
+			"3-days": 5,
+			"7-days": 9,
+			"15-days": 16,
+			"30-days": 28,
+			"2gb": 4,
+			"5gb": 8,
+			"10gb": 12,
+			"20gb": 20,
+			"50gb": 35
+		}
+	},
+	{
+		"id": "ae",
+		"name": "United Arab Emirates",
+		"popular": true,
+		"prices": {
+			"1-day": 3,
+			"3-days": 6,
+			"7-days": 11,
+			"15-days": 19,
+			"30-days": 33,
+			"2gb": 5,
+			"5gb": 9,
+			"10gb": 14,
+			"20gb": 23,
+			"50gb": 38
+		}
+	},
+	{
+		"id": "gb",
+		"name": "United Kingdom",
+		"popular": true,
+		"prices": {
+			"1-day": 2.5,
+			"3-days": 6,
+			"7-days": 10,
+			"15-days": 18,
+			"30-days": 30,
+			"2gb": 4.5,
+			"5gb": 9,
+			"10gb": 13,
+			"20gb": 21,
+			"50gb": 36
+		}
+	},
+	{
+		"id": "us",
+		"name": "United States",
+		"popular": true,
+		"prices": {
+			"1-day": 3,
+			"3-days": 6,
+			"7-days": 11,
+			"15-days": 19,
+			"30-days": 33,
+			"2gb": 5,
+			"5gb": 9,
+			"10gb": 14,
+			"20gb": 23,
+			"50gb": 38
+		}
+	},
+	{
+		"id": "vn",
+		"name": "Vietnam",
+		"popular": false,
+		"prices": {
+			"1-day": 3.5,
+			"3-days": 7,
+			"7-days": 13,
+			"15-days": 21,
+			"30-days": 36,
+			"2gb": 5.5,
+			"5gb": 10,
+			"10gb": 16,
+			"20gb": 26,
+			"50gb": 42
+		}
+	}
 ];
 
-export default countries
+export default countries;

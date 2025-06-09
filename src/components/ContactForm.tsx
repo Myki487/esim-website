@@ -13,12 +13,13 @@ const platforms = ['Android', 'Android Tablet', 'iPhone', 'iPad', 'Other']
 
 export default function ContactForm() {
   const [countries, setCountries] = useState<string[]>([])
+  const [termsAccepted, setTermsAccepted] = useState(false)
 
-	useEffect(() => {
-		fetch('/api/countries')
-			.then((res) => res.json())
-			.then((data: Country[]) => setCountries(data.map((c) => c.name)))
-	}, [])
+  useEffect(() => {
+    fetch('/api/countries')
+      .then((res) => res.json())
+      .then((data: Country[]) => setCountries(data.map((c) => c.name)))
+  }, [])
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
@@ -33,9 +34,9 @@ export default function ContactForm() {
         <div>
           <Label htmlFor="type" />
           <select id="type" className="w-full bg-slate-800 text-gray-50 border border-gray-700 rounded px-3 py-2">
-						<option value="" hidden>
-							Question Type
-						</option>
+            <option value="" hidden>
+              Question Type
+            </option>
             {questionTypes.map((type) => (
               <option key={type}>{type}</option>
             ))}
@@ -48,9 +49,9 @@ export default function ContactForm() {
         <div>
           <Label htmlFor="platform" />
           <select 
-						id="platform" 
-						className="w-full bg-slate-800 text-gray-50 border border-gray-700 rounded px-3 py-2">
-						<option value="" hidden>
+            id="platform" 
+            className="w-full bg-slate-800 text-gray-50 border border-gray-700 rounded px-3 py-2">
+            <option value="" hidden>
               Platform
             </option>
             {platforms.map((p) => (
@@ -83,13 +84,15 @@ export default function ContactForm() {
           <Textarea id="message" placeholder="Describe your request or issue" rows={5} />
         </div>
         <div className="md:col-span-2 flex items-center space-x-2">
-          <Checkbox id="terms" />
+          <Checkbox id="terms" checked={termsAccepted} onCheckedChange={(checked) => setTermsAccepted(!!checked)} />
           <Label htmlFor="terms">
             I accept the terms and conditions and the treatment of data use.
           </Label>
         </div>
         <div className="md:col-span-2 text-center">
-          <Button type="submit" className='w-full h-12'>Submit</Button>
+          <Button type="submit" className='w-full h-12' disabled={!termsAccepted}>
+            Submit
+          </Button>
         </div>
       </form>
     </div>
