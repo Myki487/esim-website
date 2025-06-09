@@ -8,7 +8,7 @@ export default function AboutPage() {
 
   return (
     <div>
-      <div className="relative h-64 w-full">
+      <div className="relative h-96 w-full">
         <Image
           src="/about-bg.jpg"
           alt="About Us Background"

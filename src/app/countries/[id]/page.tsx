@@ -14,7 +14,7 @@ export default async function CountryPage({ params }: { params: { id: string } }
 
   return (
     <div>
-      <div className="relative h-64 w-full border">
+      <div className="relative h-96 w-full border">
         <Image
           src={`/country-images/${country.id}.jpg`}
           alt={`${country.name} Travel Bundle`}

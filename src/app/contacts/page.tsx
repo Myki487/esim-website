@@ -4,7 +4,7 @@ import ContactForm from '@/components/ContactForm'
 export default function ContactPage() {
   return (
     <div>
-      <div className="relative h-64 w-full">
+      <div className="relative h-96 w-full">
         <Image
           src="/contact-bg.jpg"
           alt="Contact background"

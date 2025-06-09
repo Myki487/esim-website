@@ -3,7 +3,7 @@ import Image from 'next/image'
 export default function TermsPage() {
   return (
 		<div>
-			<div className="relative h-64 w-full">
+			<div className="relative h-96 w-full">
 					<Image
 						src="/terms-bg.jpg"
 						alt="About Us Background"

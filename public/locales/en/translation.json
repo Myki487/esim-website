@@ -13,5 +13,10 @@
     "p2": "Whether you’re exploring the streets of Tokyo, relaxing on a beach in Bali, or attending a conference in Berlin, our service keeps you connected with fast, affordable data in over 40 countries worldwide.",
     "p3": "We are a team of travel enthusiasts, tech lovers, and problem solvers — all united under one mission: to redefine how people connect abroad.",
     "p4": "With 24/7 support and constantly growing compatibility, we’re here to support your adventures — wherever they may take you."
+  },
+  "common": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register"
   }
 }

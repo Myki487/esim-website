@@ -5,7 +5,7 @@ import { troubleshootingFaqs, generalFaqs, managingEsimFaqs } from '@/data/faq'
 export default function FAQPage() {
   return (
     <div>
-      <div className="relative h-64 w-full">
+      <div className="relative h-96 w-full">
         <Image
           src="/faq-bg.jpg"
           alt="FAQ background"

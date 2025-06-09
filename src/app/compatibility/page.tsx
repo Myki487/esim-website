@@ -4,7 +4,7 @@ import DeviceCompatibility from '@/components/Compatibility'
 export default function CompatibilityPage() {
   return (
     <div>
-      <div className="relative h-64 w-full">
+      <div className="relative h-96 w-full">
         <Image
           src="/compatibility-bg.jpg"
           alt="Compatibility background"

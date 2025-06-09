@@ -49,7 +49,7 @@ export default function DashboardPage() {
   if (!user) return null;
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
+    <div className="max-w-3xl mx-auto p-6 mt-20">
       <h1 className="text-2xl font-bold mb-4">Your Purchases</h1>
       {purchases.length === 0 ? (
         <p>No purchases yet.</p>

@@ -13,7 +13,7 @@ export default function Home() {
         className="object-cover opacity-30"
       />
 
-      <div className="relative z-10 text-center p-8 max-w-4xl mx-auto space-y-6">
+      <div className="relative z-10 text-center p-8 max-w-4xl mx-auto mt-14">
         <h1 className="text-6xl md:text-7xl lg:text-8xl font-poppins font-extrabold text-travels-go-blue-accent drop-shadow-lg animate-fade-in-up">
           TravelsGo
         </h1>
