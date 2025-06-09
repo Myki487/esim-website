@@ -44,7 +44,8 @@ export default function PlanSelection({
       countryName,
       planId: selectedPlan,
       label: [...unlimitedOptions, ...dataPlans].find(p => p.value === selectedPlan)?.label || selectedPlan,
-      price
+      price,
+      date: new Date().toISOString()
     }))
 
     router.push('/checkout')

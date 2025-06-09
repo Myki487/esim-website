@@ -30,11 +30,20 @@ export default function LoginPage() {
         return
       }
 
-      login({ email: data.user.email, username: data.user.name || '' })
+      login({
+        id: data.userId,
+        email: data.email, 
+	    	name: data.username || '',
+      })
+
       router.push('/checkout')
-    } catch (err) {
+    } catch (err: unknown) {
       console.error(err)
-      setError('Server error')
+      let errorMessage = 'Server error';
+      if (err instanceof Error) {
+        errorMessage = err.message;
+      }
+      setError(errorMessage);
     }
   }
 

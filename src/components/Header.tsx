@@ -40,7 +40,7 @@ export default function Header() {
       <div className="flex gap-4 items-center">
         {user ? (
           <>
-              <Link href="/dashboard" className="text-sm text-white hover:underline">{user.username}</Link>
+              <Link href="/dashboard" className="text-sm text-white hover:underline">{user.name}</Link>
               <Link onClick={logout} href="/logout" className="text-sm text-white hover:underline">Logout</Link>
           </>
         ) : (

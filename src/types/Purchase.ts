@@ -1,4 +1,5 @@
 export type Purchase = {
+	id: number
   countryId: string
   planId: string
 	countryName: string

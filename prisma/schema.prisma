@@ -14,4 +14,17 @@ model User {
   password  String
   name      String?
   createdAt DateTime @default(now())
+  purchases Purchase[]
+}
+
+model Purchase {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
+  countryId   String
+  planId      String
+  countryName String  
+  label       String
+  price       Float 
+  date        DateTime @default(now()) 
 }
