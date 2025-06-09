@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <UserProvider>
           <I18nProvider>
             <Header />
-            <div className="min-h-screen pt-20">
+            <div className="min-h-screen pt-14">
               {children}
             </div>
             <Footer />
