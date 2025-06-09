@@ -1,15 +1,13 @@
 'use client'
 
-import { useUser } from '@/context/UserContext'
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import { StaticUser } from '@/types/StaticUser'
+import { useUser } from '@/context/UserContext'
 
 export default function LoginPage() {
   const { login, user } = useUser()
   const router = useRouter()
-
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
@@ -17,26 +15,26 @@ export default function LoginPage() {
     if (user) router.push('/dashboard')
   }, [user, router])
 
-  const handleLogin = () => {
-    const staticUsers: StaticUser[] = [
-      { username: 'Admin777', email: 'myusername1928@gmail.com', password: '03058425' },
-      { username: 'VavyLone', email: 'mr.k.g.487@gmail.com', password: 'VavyLone487' },
-    ]
+  const handleLogin = async () => {
+    setError('')
+    try {
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      })
 
-    const storedUsers = localStorage.getItem('registered_users')
-    const dynamicUsers: StaticUser[] = storedUsers ? JSON.parse(storedUsers) : []
+      const data = await res.json()
+      if (!res.ok) {
+        setError(data.message || 'Login failed')
+        return
+      }
 
-    const allUsers = [...staticUsers, ...dynamicUsers]
-
-    const foundUser = allUsers.find(
-      (u) => u.username === username && u.password === password
-    )
-
-    if (foundUser) {
-      login({ username: foundUser.username, email: foundUser.email })
+      login({ email: data.user.email, username: data.user.name || '' })
       router.push('/checkout')
-    } else {
-      setError('Invalid credentials')
+    } catch (err) {
+      console.error(err)
+      setError('Server error')
     }
   }
 
@@ -45,11 +43,11 @@ export default function LoginPage() {
       <h2 className="text-2xl font-bold mb-4">Login</h2>
       {error && <p className="text-red-500">{error}</p>}
       <input
-        type="text"
-        placeholder="Username"
+        type="email"
+        placeholder="Email"
         className="w-full mb-2 p-2 rounded bg-gray-700"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <input
         type="password"
@@ -64,12 +62,12 @@ export default function LoginPage() {
       >
         Login
       </button>
-			<p className="mt-4 text-center">
-				Don’t have an account?{' '}
-				<a href="/register" className="text-blue-400 hover:underline">
-					Register here
-				</a>
-			</p>
+      <p className="mt-4 text-center">
+        Don’t have an account?{' '}
+        <a href="/register" className="text-blue-400 hover:underline">
+          Register here
+        </a>
+      </p>
     </div>
   )
 }
