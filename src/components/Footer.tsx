@@ -24,7 +24,7 @@ export default function Footer() {
 					<Image src="/Logo.png" alt="TravelsGo Logo" width={64} height={64} />
           <div className="text-xl font-bold">TravelsGo</div>
           <p className="text-sm mt-2">
-            travelsgo.com eSIM provides affordable, easy to use travel bundles in over 40 countries worldwide.
+            travelsgo.com eSIM provides affordable, easy to use travel bundles in over 32 countries worldwide.
           </p>
         </div>
         <div>

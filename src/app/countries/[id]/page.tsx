@@ -1,4 +1,3 @@
-// src\app\countries\[id]\page.tsx
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import SearchCountry from '@/components/SearchCountry'

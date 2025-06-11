@@ -34,23 +34,6 @@ export const countries = [
 		}
 	},
 	{
-		"id": "at",
-		"name": "Austria",
-		"popular": false,
-		"prices": {
-			"1-day": 2.5,
-			"3-days": 6,
-			"7-days": 10,
-			"15-days": 18,
-			"30-days": 30,
-			"2gb": 4.5,
-			"5gb": 9,
-			"10gb": 13,
-			"20gb": 21,
-			"50gb": 36
-		}
-	},
-	{
 		"id": "br",
 		"name": "Brazil",
 		"popular": false,
@@ -99,23 +82,6 @@ export const countries = [
 			"10gb": 12,
 			"20gb": 20,
 			"50gb": 35
-		}
-	},
-	{
-		"id": "cz",
-		"name": "Czech Republic",
-		"popular": false,
-		"prices": {
-			"1-day": 3,
-			"3-days": 6,
-			"7-days": 11,
-			"15-days": 19,
-			"30-days": 33,
-			"2gb": 5,
-			"5gb": 9,
-			"10gb": 14,
-			"20gb": 23,
-			"50gb": 38
 		}
 	},
 	{
@@ -187,23 +153,6 @@ export const countries = [
 		}
 	},
 	{
-		"id": "hu",
-		"name": "Hungary",
-		"popular": false,
-		"prices": {
-			"1-day": 3,
-			"3-days": 6,
-			"7-days": 11,
-			"15-days": 19,
-			"30-days": 33,
-			"2gb": 5,
-			"5gb": 9,
-			"10gb": 14,
-			"20gb": 23,
-			"50gb": 38
-		}
-	},
-	{
 		"id": "in",
 		"name": "India",
 		"popular": false,
@@ -255,23 +204,6 @@ export const countries = [
 		}
 	},
 	{
-		"id": "il",
-		"name": "Israel",
-		"popular": false,
-		"prices": {
-			"1-day": 2,
-			"3-days": 5,
-			"7-days": 9,
-			"15-days": 16,
-			"30-days": 28,
-			"2gb": 4,
-			"5gb": 8,
-			"10gb": 12,
-			"20gb": 20,
-			"50gb": 35
-		}
-	},
-	{
 		"id": "it",
 		"name": "Italy",
 		"popular": true,
@@ -303,23 +235,6 @@ export const countries = [
 			"10gb": 13,
 			"20gb": 21,
 			"50gb": 36
-		}
-	},
-	{
-		"id": "my",
-		"name": "Malaysia",
-		"popular": false,
-		"prices": {
-			"1-day": 1.5,
-			"3-days": 4,
-			"7-days": 8,
-			"15-days": 14,
-			"30-days": 25,
-			"2gb": 3.5,
-			"5gb": 7,
-			"10gb": 11,
-			"20gb": 18,
-			"50gb": 30
 		}
 	},
 	{
@@ -405,23 +320,6 @@ export const countries = [
 			"10gb": 11,
 			"20gb": 18,
 			"50gb": 30
-		}
-	},
-	{
-		"id": "ph",
-		"name": "Philippines",
-		"popular": false,
-		"prices": {
-			"1-day": 3.5,
-			"3-days": 7,
-			"7-days": 13,
-			"15-days": 21,
-			"30-days": 36,
-			"2gb": 5.5,
-			"5gb": 10,
-			"10gb": 16,
-			"20gb": 26,
-			"50gb": 42
 		}
 	},
 	{
@@ -544,23 +442,6 @@ export const countries = [
 		}
 	},
 	{
-		"id": "ch",
-		"name": "Switzerland",
-		"popular": false,
-		"prices": {
-			"1-day": 2.5,
-			"3-days": 6,
-			"7-days": 10,
-			"15-days": 18,
-			"30-days": 30,
-			"2gb": 4.5,
-			"5gb": 9,
-			"10gb": 13,
-			"20gb": 21,
-			"50gb": 36
-		}
-	},
-	{
 		"id": "th",
 		"name": "Thailand",
 		"popular": true,
@@ -662,23 +543,6 @@ export const countries = [
 			"50gb": 38
 		}
 	},
-	{
-		"id": "vn",
-		"name": "Vietnam",
-		"popular": false,
-		"prices": {
-			"1-day": 3.5,
-			"3-days": 7,
-			"7-days": 13,
-			"15-days": 21,
-			"30-days": 36,
-			"2gb": 5.5,
-			"5gb": 10,
-			"10gb": 16,
-			"20gb": 26,
-			"50gb": 42
-		}
-	}
 ];
 
 export default countries;

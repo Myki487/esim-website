@@ -1,4 +1,3 @@
-// src\components\SearchCountry.tsx
 'use client'
 
 import { Country } from '@/types/Country'
