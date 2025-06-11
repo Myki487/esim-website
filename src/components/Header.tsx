@@ -62,42 +62,6 @@ export default function Header() {
             </Link>
           ))}
 
-          {user ? (
-            <>
-              <Link
-                href="/dashboard"
-                className={`
-                  ${commonLinkClasses}
-                  ${isActive('/dashboard') ? activeLinkClass : inactiveLinkClass}
-                  ${!isActive('/dashboard') ? 'hover:text-travels-go-blue-accent' : ''}
-                  transition-colors duration-300
-                `}
-              >
-                {user.name}
-              </Link>
-              <button
-                onClick={logout}
-                className={commonButtonClasses}
-              >
-                {t('common.logout')}
-              </button>
-            </>
-          ) : (
-            <>
-              <button
-                onClick={() => router.push('/login')} 
-                className={commonButtonClasses}
-              >
-                {t('common.login')}
-              </button>
-              <button
-                onClick={() => router.push('/register')} 
-                className={commonButtonClasses} 
-              >
-                {t('common.register')}
-              </button>
-            </>
-          )}
 
           <div className="flex gap-2 font-inter">
             <button
@@ -117,11 +81,47 @@ export default function Header() {
                 text-base font-medium transition-colors duration-300
                 ${i18n.language === 'en' ? 'text-travels-go-blue-accent' : 'text-travels-go-text-gray hover:text-travels-go-blue-accent'}
                 focus:outline-none focus:ring-2 focus:ring-travels-go-blue-accent
-              `}
-            >
+								`}
+								>
               EN
             </button>
           </div>
+							{user ? (
+								<>
+									<Link
+										href="/dashboard"
+										className={`
+											${commonLinkClasses}
+											${isActive('/dashboard') ? activeLinkClass : inactiveLinkClass}
+											${!isActive('/dashboard') ? 'hover:text-travels-go-blue-accent' : ''}
+											transition-colors duration-300
+										`}
+									>
+										{user.name}
+									</Link>
+									<button
+										onClick={logout}
+										className={commonButtonClasses}
+									>
+										{t('common.logout')}
+									</button>
+								</>
+							) : (
+								<>
+									<button
+										onClick={() => router.push('/login')} 
+										className={commonButtonClasses}
+									>
+										{t('common.login')}
+									</button>
+									<button
+										onClick={() => router.push('/register')} 
+										className={commonButtonClasses} 
+									>
+										{t('common.register')}
+									</button>
+								</>
+							)}
         </div>
       </nav>
     </header>
