@@ -18,9 +18,9 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
-export const metadata: Metadata = { 
-  title: 'TravelsGo', 
-  description: 'Your go-to for affordable eSIM plans worldwide.', 
+export const metadata: Metadata = {
+  title: 'TravelsGo',
+  description: 'Your go-to for affordable eSIM plans worldwide.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

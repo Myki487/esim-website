@@ -1,17 +1,20 @@
 'use client'
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
 
 type User = {
   id: number;
   name: string;
   email: string;
+  fullName?: string;
+  phoneNumber?: string;
 } | null;
 
 type UserContextType = {
   user: User;
-  login: (userData: { id: number; name: string; email: string }) => void;
+  login: (userData: { id: number; name: string; email: string; fullName?: string; phoneNumber?: string }) => void;
   logout: () => void;
+  updateUser: (newUserData: { name?: string; fullName?: string; phoneNumber?: string }) => void;
 };
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -41,25 +44,43 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     }
   }, []);
 
-  const login = (userData: { id: number; name: string; email: string }) => {
-    const fullUserData: User = { id: userData.id, name: userData.name, email: userData.email };
+  const login = useCallback((userData: { id: number; name: string; email: string; fullName?: string; phoneNumber?: string }) => {
+    const fullUserData: User = {
+      id: userData.id,
+      name: userData.name,
+      email: userData.email,
+      fullName: userData.fullName,
+      phoneNumber: userData.phoneNumber,
+    };
     setUser(fullUserData);
     if (typeof window !== 'undefined') {
       localStorage.setItem(userStorageKey, JSON.stringify(fullUserData));
     }
     console.log('User logged in and saved to local storage:', fullUserData);
-  };
+  }, []);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     setUser(null);
     if (typeof window !== 'undefined') {
       localStorage.removeItem(userStorageKey);
     }
     console.log('User logged out and removed from local storage.');
-  };
+  }, []);
+
+  const updateUser = useCallback((newUserData: { name?: string; fullName?: string; phoneNumber?: string }) => {
+    setUser(prevUser => {
+      if (!prevUser) return null;
+      const updated = { ...prevUser, ...newUserData };
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(userStorageKey, JSON.stringify(updated));
+      }
+      console.log('User data updated in context and local storage:', updated);
+      return updated;
+    });
+  }, []);
 
   return (
-    <UserContext.Provider value={{ user, login, logout }}>
+    <UserContext.Provider value={{ user, login, logout, updateUser }}>
       {children}
     </UserContext.Provider>
   );
