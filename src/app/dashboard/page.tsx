@@ -393,7 +393,7 @@ export default function DashboardPage() {
                   key={purchase.id || index}
                   className="bg-gray-700 p-4 rounded-lg shadow-sm border border-gray-600 animate-fade-in-up"
                 >
-                  <p className="text-lg font-semibold text-blue-300">
+                  <p className="text-lg font-semibold text-green-400">
                     {purchase.countryName} - {purchase.label}
                   </p>
                   <p className="text-gray-300">
