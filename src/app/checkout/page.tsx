@@ -1,6 +1,6 @@
 'use client'
 
-import { useUser } from '@/context/UserContext'
+import { useUser } from '@/components/UserContext'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState, FormEvent } from 'react'
 import { Purchase } from '@/types/Purchase'

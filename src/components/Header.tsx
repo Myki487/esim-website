@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
-import { useUser } from '@/context/UserContext'
+import { useUser } from '@/components/UserContext'
 
 const navItems = [
   { href: '/about', label: 'about' },

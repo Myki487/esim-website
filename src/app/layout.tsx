@@ -3,7 +3,7 @@ import Header from '@/components/Header'
 import { Poppins, Inter } from 'next/font/google'
 import I18nProvider from './i18n-provider'
 import Footer from '@/components/Footer'
-import { UserProvider } from '@/context/UserContext'
+import { UserProvider } from '@/components/UserContext'
 import type { Metadata } from 'next'
 
 const poppins = Poppins({

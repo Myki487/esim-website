@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import { useUser } from '@/context/UserContext' // Ensure this path is correct
+import { useUser } from '@/components/UserContext' // Ensure this path is correct
 import Link from 'next/link' // Import Link for proper Next.js navigation
 
 export default function LoginPage() {
