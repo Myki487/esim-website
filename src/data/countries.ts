@@ -359,7 +359,7 @@ export const countries = [
 	{
 		"id": "sg",
 		"name": "Singapore",
-		"popular": true,
+		"popular": false,
 		"prices": {
 			"1-day": 2.5,
 			"3-days": 6,
@@ -495,7 +495,7 @@ export const countries = [
 	{
 		"id": "ae",
 		"name": "United Arab Emirates",
-		"popular": true,
+		"popular": false,
 		"prices": {
 			"1-day": 3,
 			"3-days": 6,
