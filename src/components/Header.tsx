@@ -63,7 +63,7 @@ export default function Header() {
           ))}
 
 
-          <div className="flex gap-2 font-inter">
+          {/* <div className="flex gap-2 font-inter">
             <button
               onClick={() => changeLanguage('ua')}
               className={`
@@ -85,7 +85,7 @@ export default function Header() {
 								>
               EN
             </button>
-          </div>
+          </div> */}
 							{user ? (
 								<>
 									<Link
