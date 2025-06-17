@@ -36,7 +36,7 @@ export default function CheckoutPage() {
       try {
         const parsedPlan = JSON.parse(selectedPlan) as Purchase
         setPlan(parsedPlan)
-      } catch (errorParsing: unknown) { // Виправлення тут: логування errorParsing
+      } catch (errorParsing: unknown) {
         console.error('Error parsing selectedPlan from localStorage:', errorParsing);
         setError('Invalid plan data in local storage.');
         setPlan(null);

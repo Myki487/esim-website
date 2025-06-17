@@ -1,6 +1,7 @@
 'use client'
 
 import React, { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
+import { useRouter } from 'next/navigation';
 
 type User = {
   id: number;
@@ -22,6 +23,7 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User>(null);
   const userStorageKey = 'user';
+  const router = useRouter();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -31,13 +33,13 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
           const parsedUser: User = JSON.parse(storedUser);
           if (parsedUser && parsedUser.id && parsedUser.name && parsedUser.email) {
             setUser(parsedUser);
-            console.log('User loaded from local storage:', parsedUser);
+            console.log('UserContext: User loaded from local storage:', parsedUser);
           } else {
-            console.warn('Invalid user data in local storage, clearing:', parsedUser);
+            console.warn('UserContext: Invalid user data in local storage, clearing:', parsedUser);
             localStorage.removeItem(userStorageKey);
           }
         } catch (e) {
-          console.error('Failed to parse user from local storage:', e);
+          console.error('UserContext: Failed to parse user from local storage:', e);
           localStorage.removeItem(userStorageKey);
         }
       }
@@ -56,16 +58,18 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     if (typeof window !== 'undefined') {
       localStorage.setItem(userStorageKey, JSON.stringify(fullUserData));
     }
-    console.log('User logged in and saved to local storage:', fullUserData);
+    console.log('UserContext: User logged in and saved to local storage:', fullUserData);
   }, []);
 
   const logout = useCallback(() => {
+    console.log('UserContext: Logout initiated.');
     setUser(null);
     if (typeof window !== 'undefined') {
       localStorage.removeItem(userStorageKey);
     }
-    console.log('User logged out and removed from local storage.');
-  }, []);
+    console.log('UserContext: User logged out and removed from local storage. Redirecting to /login...');
+    router.push('/login');
+  }, [router]);
 
   const updateUser = useCallback((newUserData: { name?: string; fullName?: string | null; phoneNumber?: string | null }) => {
     setUser(prevUser => {
@@ -81,7 +85,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       if (typeof window !== 'undefined') {
         localStorage.setItem(userStorageKey, JSON.stringify(updated));
       }
-      console.log('User data updated in context and local storage:', updated);
+      console.log('UserContext: User data updated in context and local storage:', updated);
       return updated;
     });
   }, []);
