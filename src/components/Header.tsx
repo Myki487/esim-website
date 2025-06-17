@@ -31,12 +31,23 @@ export default function Header() {
   const activeLinkClass = 'text-travels-go-blue-accent';
   const inactiveLinkClass = 'text-travels-go-text-light';
 
-  const commonButtonClasses = `
-    bg-travels-go-blue-accent text-white px-5 py-2 rounded-full font-bold font-poppins shadow-md
+  const redButtonClasses = `
+    bg-red-700 text-white px-4 py-1 rounded-full font-bold font-poppins shadow-md
     transition-colors duration-300
-    hover:bg-blue-600 active:bg-blue-700
-    focus:outline-none focus:ring-2 focus:ring-travels-go-blue-accent
+    hover:bg-red-800 active:bg-red-900
   `;
+
+  const blueButtonClasses = `
+    bg-blue-600 text-white px-4 py-1 rounded-full font-bold font-poppins shadow-md
+    transition-colors duration-300
+    hover:bg-blue-700 active:bg-blue-800
+  `;
+
+  const greenTextClasses = `
+    text-green-400 hover:text-green-300 active:text-green-200 transition-colors duration-300
+    font-semibold
+  `;
+
 
   return (
     <header className="
@@ -47,7 +58,7 @@ export default function Header() {
       py-4 px-6 md:px-10
     ">
       <nav className="flex justify-between items-center max-w-7xl mx-auto">
-        <Link href="/" className="text-3xl font-poppins font-bold text-travels-go-blue-accent hover:text-blue-400 transition-colors duration-300">
+        <Link href="/" className="text-3xl font-poppins font-bold text-travels-go-blue-accent hover:text-blue-400 transition-colors duration-400">
           TravelsGo
         </Link>
 
@@ -56,72 +67,58 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className={`${commonLinkClasses} ${isActive(item.href) ? activeLinkClass : inactiveLinkClass} transition-colors duration-300`}
+              className={`${commonLinkClasses} ${isActive(item.href) ? activeLinkClass : inactiveLinkClass}`}
             >
               {t(`nav.${item.label}`)}
             </Link>
           ))}
 
-
-          {/* <div className="flex gap-2 font-inter">
-            <button
-              onClick={() => changeLanguage('ua')}
-              className={`
-                text-base font-medium transition-colors duration-300
-                ${i18n.language === 'ua' ? 'text-travels-go-blue-accent' : 'text-travels-go-text-gray hover:text-travels-go-blue-accent'}
-                focus:outline-none focus:ring-2 focus:ring-travels-go-blue-accent
-              `}
-            >
-              UA
-            </button>
-            <span className="text-travels-go-text-gray">/</span>
-            <button
-              onClick={() => changeLanguage('en')}
-              className={`
-                text-base font-medium transition-colors duration-300
-                ${i18n.language === 'en' ? 'text-travels-go-blue-accent' : 'text-travels-go-text-gray hover:text-travels-go-blue-accent'}
-                focus:outline-none focus:ring-2 focus:ring-travels-go-blue-accent
-								`}
-								>
-              EN
-            </button>
-          </div> */}
-							{user ? (
-								<>
-									<Link
-										href="/dashboard"
-										className={`
-											${commonLinkClasses}
-											${isActive('/dashboard') ? activeLinkClass : inactiveLinkClass}
-											${!isActive('/dashboard') ? 'hover:text-travels-go-blue-accent' : ''}
-											transition-colors duration-300
-										`}
-									>
-										{user.name}
-									</Link>
-									<button
-										onClick={logout}
-										className={commonButtonClasses}
-									>
-										{t('common.logout')}
-									</button>
-								</>
-							) : (
-								<>
-									<button
-										onClick={() => router.push('/login')} 
-										className={commonButtonClasses}
-									>
-										{t('common.login')}
-									</button>
-									<button
-										onClick={() => router.push('/register')} 
-										className={commonButtonClasses} 
-									>
-										{t('common.register')}
-									</button>
-								</>
-							)}
+          {user ? (
+            <>
+              <Link
+                href="/dashboard"
+                className={`
+                  ${commonLinkClasses}
+                  ${isActive('/dashboard') ? activeLinkClass : inactiveLinkClass}
+                  ${!isActive('/dashboard') ? 'hover:text-travels-go-blue-accent' : ''}
+                  ${greenTextClasses}
+                  no-focus-highlight
+                `}
+              >
+                {user.name}
+              </Link>
+              <button
+                onClick={() => {
+                  console.log('Header: Logout button clicked.');
+                  logout();
+                }}
+                className={redButtonClasses}
+              >
+                {t('common.logout')}
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => {
+                  console.log('Header: Login button clicked, redirecting to /login.');
+                  router.push('/login');
+                }}
+                className={blueButtonClasses}
+              >
+                {t('common.login')}
+              </button>
+              <button
+                onClick={() => {
+                  console.log('Header: Register button clicked, redirecting to /register.');
+                  router.push('/register');
+                }}
+                className={blueButtonClasses}
+              >
+                {t('common.register')}
+              </button>
+            </>
+          )}
         </div>
       </nav>
     </header>

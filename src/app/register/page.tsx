@@ -1,28 +1,25 @@
-// src/app/register/page.tsx
 'use client'
 
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import Link from 'next/link'
+import { useUser } from '@/components/UserContext'
 
 export default function RegisterPage() {
   const router = useRouter()
+  const { login } = useUser();
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  // --- ВИДАЛЕНО: const [fullName, setFullName] = useState('') ---
-  // --- ВИДАЛЕНО: const [phoneNumber, setPhoneNumber] = useState('') ---
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    // --- Змінено: Валідація тепер тільки для username, email, password ---
     if (!username || !email || !password) {
       setError('Please fill in all required fields');
       return;
     }
-    // --- Кінець змін ---
 
     setLoading(true);
     setError(null);
@@ -31,21 +28,28 @@ export default function RegisterPage() {
       const res = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        // --- Змінено: fullName та phoneNumber більше не відправляються ---
         body: JSON.stringify({ name: username, email, password }),
-        // --- Кінець змін ---
       })
 
       const data = await res.json()
       if (!res.ok) {
         setError(data.message || 'Registration failed');
+        console.error('RegisterPage: Registration API error:', data.error || data.message);
         return;
       }
 
-      alert('Registration successful! Please login to your account.');
-      router.push('/login');
+      login({
+        id: data.user.id,
+        name: data.user.name,
+        email: data.user.email,
+        fullName: data.user.fullName || null,
+        phoneNumber: data.user.phoneNumber || null, 
+      });
+      console.log('RegisterPage: Registration successful, user automatically logged in and data set in context.');
+      router.push('/');
+
     } catch (err: unknown) {
-      console.error(err);
+      console.error('RegisterPage: Client-side registration error:', err);
       let errorMessage = 'Server error. Please try again later.';
       if (err instanceof Error) {
         errorMessage = err.message;
@@ -69,10 +73,12 @@ export default function RegisterPage() {
       <div className="absolute inset-0 bg-black opacity-60"></div>
 
       <div className="relative z-10 bg-gray-800 bg-opacity-70 p-8 sm:p-10 rounded-xl shadow-2xl w-full max-w-sm sm:max-w-md animate-fade-in-up border border-gray-700">
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-6 text-center drop-shadow-md">
-          Create Account
-        </h1>
-        <p className="text-gray-300 text-center mb-6">Join our community</p>
+        <div className="text-center mb-8">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-2 tracking-wide">
+            Create Account
+          </h1>
+          <p className="text-gray-300">Join our community</p>
+        </div>
 
         <form onSubmit={handleRegister} className="space-y-5">
           {error && <p className="text-red-400 text-sm text-center font-medium mb-4">{error}</p>}
@@ -91,8 +97,6 @@ export default function RegisterPage() {
               required
             />
           </div>
-          {/* --- ВИДАЛЕНО: div для Full Name --- */}
-          {/* --- ВИДАЛЕНО: div для Phone Number --- */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
               Email Address
@@ -143,7 +147,7 @@ export default function RegisterPage() {
 
         <p className="mt-6 text-center text-sm text-gray-400">
           Already have an account?{' '}
-          <Link href="/login" className="font-medium text-green-400 hover:text-green-300 hover:underline transition-colors duration-300">
+          <Link href="/login" className="font-medium text-blue-400 hover:text-blue-300 hover:underline transition-colors duration-300">
             Login here
           </Link>
         </p>

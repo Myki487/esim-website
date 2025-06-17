@@ -151,3 +151,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+.no-focus-highlight:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+  --tw-ring-color: transparent !important;
+  --tw-ring-shadow: none !important;
+  --tw-shadow: none !important;
+  background: var(--backgroundColorPrimary);
+}

@@ -1,4 +1,3 @@
-// src/app/api/register/route.ts
 import { db } from '@/lib/db';
 import bcrypt from 'bcryptjs';
 import { NextResponse } from 'next/server';
@@ -8,12 +7,10 @@ export async function POST(req: Request) {
   console.log('✅ BOOM! (Register API hit)');
 
   try {
-    // --- Змінено: fullName та phoneNumber більше не очікуються ---
     const { name, email, password } = await req.json();
     if (!name || !email || !password) {
       return NextResponse.json({ message: 'All required fields are missing' }, { status: 400 });
     }
-    // --- Кінець змін ---
 
     console.log(`🔍 Checking for existing user with email: ${email}`);
     const existingUser = await db.user.findUnique({ where: { email } });
@@ -31,13 +28,11 @@ export async function POST(req: Request) {
         name,
         email,
         password: hashedPassword,
-        // --- ВИДАЛЕНО: fullName, phoneNumber, ---
       },
       select: {
         id: true,
         name: true,
         email: true,
-        // --- ВИДАЛЕНО: fullName: true, phoneNumber: true, ---
       }
     });
 
@@ -57,14 +52,12 @@ export async function POST(req: Request) {
 
       if (err.code === 'P2002') {
         const target = (err.meta?.target as string[]) || [];
-        // --- Змінено: Перевіряємо тільки email, оскільки phoneNumber більше не буде обов'язковим/унікальним при реєстрації ---
         if (target.includes('email')) {
           errorMessage = 'User with this email already exists.';
         } else {
-          errorMessage = 'A unique constraint violation occurred (check your schema).'; // Загальніша помилка для інших унікальних полів
+          errorMessage = 'A unique constraint violation occurred (check your schema).'; 
         }
         statusCode = 409;
-        // --- Кінець змін ---
       } else {
         errorMessage = `Database error: ${err.message}`;
       }

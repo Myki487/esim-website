@@ -2,26 +2,25 @@
 
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import { useUser } from '@/components/UserContext' // Ensure this path is correct
-import Link from 'next/link' // Import Link for proper Next.js navigation
+import { useUser } from '@/components/UserContext'
+import Link from 'next/link'
 
 export default function LoginPage() {
   const { login, user } = useUser()
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState<string | null>(null) // Ensure error can be null
-  const [loading, setLoading] = useState(false) // Add loading state
+  const [error, setError] = useState<string | null>(null)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    // Redirect if user is already logged in
     if (user) {
-      router.push('/dashboard') // Redirect to dashboard after login
+      router.push('/')
     }
   }, [user, router])
 
-  const handleLogin = async (e: React.FormEvent) => { // Use FormEvent for form submission
-    e.preventDefault(); // Prevent default form submission
+  const handleLogin = async (e: React.FormEvent) => { 
+    e.preventDefault();
     setLoading(true);
     setError(null);
 
@@ -38,9 +37,8 @@ export default function LoginPage() {
         return;
       }
 
-      // Important: Ensure data.user contains fullName and phoneNumber from API
-      login(data.user); // Pass the full user object from the API response
-      router.push('/dashboard'); // Redirect to dashboard after successful login
+      login(data.user);
+      router.push('/dashboard');
 
     } catch (err: unknown) {
       console.error(err);
@@ -58,16 +56,14 @@ export default function LoginPage() {
     <div
       className="min-h-screen flex items-center justify-center bg-gray-900 px-4 py-8 sm:px-6 lg:px-8"
       style={{
-        backgroundImage: 'url("/login-bg.jpg")', // New login background image
+        backgroundImage: 'url("/login-bg.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
       }}
     >
-      {/* Semi-transparent overlay for better readability */}
       <div className="absolute inset-0 bg-black opacity-60"></div>
 
-      {/* Login Form Container */}
       <div className="relative z-10 bg-gray-800 bg-opacity-70 p-8 sm:p-10 rounded-xl shadow-2xl w-full max-w-sm sm:max-w-md animate-fade-in-up border border-gray-700">
         <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-6 text-center drop-shadow-md">
           Welcome Back!
