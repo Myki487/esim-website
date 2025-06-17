@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
-import SearchCountry from '@/components/SearchCountry'
 import PlanSelection from '@/components/PlanSelection'
 import countries from '@/data/countries'
 import CountryTabs from '@/components/CountryTabs'
@@ -21,10 +20,9 @@ export default async function CountryPage({ params }: { params: { id: string } }
           className="object-cover opacity-40"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4">
-          <h1 className="text-4xl font-bold text-white drop-shadow-lg">
+          <h1 className="text-6xl font-bold text-white drop-shadow-lg">
             {country.name} Travel Bundle
           </h1>
-          <SearchCountry compact />
         </div>
       </div>
 
