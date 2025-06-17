@@ -25,8 +25,8 @@ export default function Header() {
   const isActive = (href: string) => pathname === href;
 
   const commonLinkClasses = `
-    text-base font-inter font-medium
-    focus:outline-none focus:ring-2 focus:ring-travels-go-blue-accent
+    text-green hover:text-gray-300 active:text-gray-400 transition-colors duration-300
+    font-semibold
   `;
   const activeLinkClass = 'text-travels-go-blue-accent';
   const inactiveLinkClass = 'text-travels-go-text-light';
