@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 
 export default function Footer() {
   const [popularCountries, setPopularCountries] = useState<Country[]>([])
+  const [subscriptionMessage, setSubscriptionMessage] = useState<string | null>(null);
 
   useEffect(() => {
     fetch('/api/countries')
@@ -18,19 +19,22 @@ export default function Footer() {
       .catch((error) => console.error("Failed to fetch popular countries:", error));
   }, [])
 
+  const handleSubscribe = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubscriptionMessage("Great! You'll soon receive some useful suggestions");
+  };
+
   return (
     <footer className="bg-gray-950 text-gray-300 py-12 px-6 shadow-top">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-y-10 gap-x-8">
-        {/* Company Info & Logo */}
-        <div className="lg:col-span-2">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-y-10 gap-x-8">
+        <div className="lg:col-span-2 xl:col-span-2">
           <Image src="/Logo.png" alt="TravelsGo Logo" width={80} height={80} className="mb-4" />
           <div className="text-3xl font-extrabold text-white mb-2">TravelsGo</div>
-          <p className="text-sm leading-relaxed">
+          <p className="text-sm leading-relaxed max-w-sm">
             TravelsGo eSIM provides affordable, easy to use travel bundles in over 32 countries worldwide.
             Stay connected wherever your adventures take you.
           </p>
           <div className="mt-6 flex space-x-4">
-            {/* Social Media Icons */}
             <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors duration-300">
               <svg fill="currentColor" viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
                 <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V22C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
@@ -49,12 +53,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <div>
+        <div className="lg:col-span-1 xl:col-span-1">
           <h3 className="text-lg font-semibold mb-3 text-white">Popular Countries</h3>
-          <div className="max-h-48 overflow-y-auto pr-2 custom-scrollbar">
+          <div className="max-h-56 overflow-y-auto pr-2 custom-scrollbar">
             <ul className="grid grid-cols-2 gap-y-2 gap-x-4 text-sm">
               {popularCountries.length > 0 ? (
-                popularCountries.slice(0, 12).map((country) => (
+                popularCountries.slice(0, 16).map((country) => (
                   <li key={country.id}>
                     <Link href={`/countries/${country.id}`} className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
                       {country.name}
@@ -62,32 +66,53 @@ export default function Footer() {
                   </li>
                 ))
               ) : (
-                <li className="col-span-2">No popular countries found.</li>
+                <li className="col-span-2 text-gray-500">Loading popular countries...</li>
               )}
             </ul>
           </div>
         </div>
 
-        {/* Quick Links (FAQ & Legal) */}
-        <div>
+        <div className="lg:col-span-1 xl:col-span-1">
           <h3 className="text-lg font-semibold mb-3 text-white">Quick Links</h3>
-          <ul className="space-y-2 text-sm">
+          <ul className="grid grid-cols-1 gap-y-2 text-sm">
             <li><Link href="/faq" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">View FAQs</Link></li>
             <li><Link href="/terms" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">Terms & Conditions</Link></li>
             <li><Link href="/privacy" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">Privacy Policy</Link></li>
             <li><Link href="/contacts" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">Contact Us</Link></li>
-          </ul>
-        </div>
-
-        {/* Support & Resources */}
-        <div>
-          <h3 className="text-lg font-semibold mb-3 text-white">Support</h3>
-          <ul className="space-y-2 text-sm">
             <li><Link href="/" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">All Countries</Link></li>
-            <li><Link href="/partners" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">Partnerships</Link></li>
             <li><Link href="/about" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">About Us</Link></li>
           </ul>
         </div>
+
+        <div className="lg:col-span-1 xl:col-span-1">
+            <h3 className="text-lg font-semibold mb-3 text-white">Stay Connected!</h3>
+            <p className="text-sm leading-relaxed mb-4">
+                Subscribe to our newsletter for exclusive deals and travel tips!
+            </p>
+            <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
+                <input
+                    type="email"
+                    placeholder="Your email address"
+                    className="p-2 rounded-md bg-gray-800 text-gray-200 border border-gray-700 focus:ring-blue-500 focus:border-blue-500"
+                    required
+                />
+                <button
+                    type="submit"
+                    className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors duration-300"
+                >
+                    Subscribe
+                </button>
+            </form>
+            {subscriptionMessage && (
+                <p className="mt-4 text-green-500 text-sm animate-fade-in-up">
+                    {subscriptionMessage}
+                </p>
+            )}
+            <div className="mt-4 text-xs text-gray-500">
+                Join our community of smart travelers.
+            </div>
+        </div>
+
       </div>
 
       <div className="border-t border-gray-800 mt-10 pt-8 text-center text-xs text-gray-500">

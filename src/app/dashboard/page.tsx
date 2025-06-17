@@ -223,15 +223,16 @@ export default function DashboardPage() {
 
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center pt-20 pb-10 px-4"
+      className="min-h-screen relative pt-20 pb-10 px-4 "
       style={{
         backgroundImage: 'url("/dashboard-bg.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
-        opacity: '0.8',
       }}
     >
+			<div className="absolute inset-0 bg-black opacity-35 z-0"></div>
+
       <div className="container mx-auto p-6 sm:p-8 lg:p-10 max-w-4xl animate-fade-in-up bg-gray-900 bg-opacity-90 rounded-xl shadow-2xl border border-gray-700">
         <h1 className="text-4xl font-extrabold text-white mb-8 text-center drop-shadow-md">
           Your Dashboard
