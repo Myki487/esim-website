@@ -510,7 +510,7 @@ export const countries = [
 		}
 	},
 	{
-		"id": "gb",
+		"id": "uk",
 		"name": "United Kingdom",
 		"popular": true,
 		"prices": {
